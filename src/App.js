@@ -33,6 +33,11 @@ class App extends Component {
     todo.isCompleted = todo.isCompleted ? false : true;
     this.setState({ todos: todos });
   }
+
+  deleteToDo(index) {
+    const todos = this.state.todos.filter((el, i) => i !== index);
+    this.setState({ todos: todos });
+  }
  
   render() {
     return (
@@ -42,6 +47,7 @@ class App extends Component {
             <ToDo
               key={ index }
               description={ todo.description }
+              deleteToDo={ () => this.deleteToDo(index)}
               isCompleted={ todo.isCompleted }
               toggleComplete={ () => this.toggleComplete(index)}
             />
